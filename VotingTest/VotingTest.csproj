@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\VotingAutomation\VotingAutomation.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="101.0.4951.4100" />
+    </ItemGroup>
+
+</Project>
