@@ -23,8 +23,7 @@ public class UsersController : ControllerBase
     [HttpPost("Index")]
     public void Post(Voter voter)
     {
-        var page = new RegistrarPage();
-        page.RegisterVoter(voter);
+
     }
     
     
