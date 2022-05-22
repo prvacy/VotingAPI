@@ -1,18 +1,19 @@
+using OpenQA.Selenium;
 using VotingModels;
 
 namespace VotingAutomation;
 
-public class VotingAutomator
+public class VotingAutomator : IVotingAutomator
 {
     private readonly RegistrarPage _page;
     private readonly string _username;
     private readonly string _pass;
 
-    public VotingAutomator(VotingAutomationOptions options)
+    public VotingAutomator(Microsoft.Extensions.Options.IOptions<VotingAutomationOptions> options, IWebDriver webDriver)
     {
-        _page = new RegistrarPage(options.WebDriver, options.RegistrarPageUrl);
-        _username = options.RegistrarUsername;
-        _pass = options.RegistrarPassword;
+        _page = new RegistrarPage(webDriver, options.Value.RegistrarPageUrl);
+        _username = options.Value.RegistrarUsername;
+        _pass = options.Value.RegistrarPassword;
     }
 
     public ResultCodes RegisterVoter(Voter voter)

@@ -14,16 +14,18 @@ public class UsersController : ControllerBase
     };
 
     private readonly ILogger<UsersController> _logger;
+    private readonly IVotingAutomator _automator;
 
-    public UsersController(ILogger<UsersController> logger)
+    public UsersController(ILogger<UsersController> logger, IVotingAutomator automator)
     {
         _logger = logger;
+        _automator = automator;
     }
 
     [HttpPost("Index")]
     public void Post(Voter voter)
     {
-
+        _automator.RegisterVoter(voter);
     }
     
     

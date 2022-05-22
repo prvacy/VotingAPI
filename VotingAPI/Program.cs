@@ -1,3 +1,7 @@
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using VotingAutomation;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +10,13 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddSingleton<IWebDriver, ChromeDriver>();
+
+builder.Services.Configure<VotingAutomationOptions>(
+    builder.Configuration.GetSection("VotingAutomationOptions"));
+
+builder.Services.AddScoped<IVotingAutomator, VotingAutomator>();
 
 var app = builder.Build();
 

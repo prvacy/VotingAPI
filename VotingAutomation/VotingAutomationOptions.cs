@@ -1,6 +1,8 @@
-using OpenQA.Selenium;
-
 namespace VotingAutomation;
 
-public record VotingAutomationOptions(string RegistrarUsername, string RegistrarPassword, IWebDriver WebDriver,
-    string RegistrarPageUrl);
+public class VotingAutomationOptions
+{
+    public string RegistrarUsername { get; set; }
+    public string RegistrarPassword { get; set; }
+    public string RegistrarPageUrl { get; set; }
+}

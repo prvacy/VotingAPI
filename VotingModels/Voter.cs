@@ -18,13 +18,18 @@ public record Voter
         Id = id;
     }
 
+    public Voter()
+    {
+        
+    }
+
     public string Id { get; init; }
     public string? GroupName { get; init; }
     public string? Surname { get; init; }
     public string? Name { get; init; }
     public string? MiddleName { get; init; }
     public string? Email { get; init; }
-    public DateTime? BirthdayDate { get; set; }
+    public DateTime? BirthdayDate { get; init; }
 
     public void Deconstruct(out string id, out string? groupName, out string? surname, out string? name,
         out string? middleName, out string? email, out DateTime? birthdayDate)
