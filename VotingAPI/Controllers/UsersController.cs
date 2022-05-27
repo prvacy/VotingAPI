@@ -5,13 +5,9 @@ using VotingModels;
 namespace VotingAPI.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("[controller]/Index")]
 public class UsersController : ControllerBase
 {
-    private static readonly string[] Summaries = new[]
-    {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
 
     private readonly ILogger<UsersController> _logger;
     private readonly IVotingAutomator _automator;
@@ -22,10 +18,22 @@ public class UsersController : ControllerBase
         _automator = automator;
     }
 
-    [HttpPost("Index")]
+    [HttpGet]
+    public IEnumerable<Voter> Get()
+    {
+        return _automator.GetVotersList();
+    }
+
+    [HttpPost]
     public void Post(Voter voter)
     {
         _automator.RegisterVoter(voter);
+    }
+
+    [HttpDelete]
+    public void Delete(string voterId)
+    {
+        _automator.SoftDeleteVoter(voterId);
     }
     
     
